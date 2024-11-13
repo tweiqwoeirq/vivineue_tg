@@ -1,0 +1,48 @@
+@startuml
+
+class BotCore {
+    +startBot()
+    +stopBot()
+}
+
+class UserInterface {
+    +displayMenu()
+    +receiveInput()
+    +sendResponse()
+}
+
+class MessageHandler {
+    +processCommand()
+    +processMessage()
+    +respondToUser()
+}
+
+class DatabaseManager {
+    +connectDatabase()
+    +fetchData(query)
+    +saveData(query)
+}
+
+class OrderProcessor {
+    +processOrder()
+    +validateOrder()
+    +getOrderStatus()
+}
+
+class GoogleFormIntegration {
+    +sendFormResponse()
+}
+
+class FileManager {
+    +saveFile()
+    +retrieveFile()
+}
+
+BotCore --> MessageHandler
+BotCore --> UserInterface
+BotCore --> DatabaseManager
+MessageHandler --> OrderProcessor
+OrderProcessor --> GoogleFormIntegration
+FileManager --> OrderProcessor
+
+@enduml
